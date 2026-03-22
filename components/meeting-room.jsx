@@ -149,18 +149,6 @@ const LLM_PROVIDERS = [
     format: "anthropic",
   },
   {
-    id: "cerebras", name: "Cerebras (무료)", icon: "🟢",
-    models: [
-      { id: "llama-4-scout-17b-16e-instruct", name: "Llama 4 Scout", desc: "무료 · 한국어 양호", speed: "매우 빠름", quality: "양호" },
-      { id: "llama-3.3-70b", name: "Llama 3.3 70B", desc: "무료 · 고성능", speed: "빠름", quality: "우수" },
-    ],
-    apiUrl: "https://api.cerebras.ai/v1/chat/completions",
-    keyPlaceholder: "csk-...",
-    free: true, cost: "무료",
-    signupUrl: "https://cloud.cerebras.ai/",
-    format: "openai",
-  },
-  {
     id: "groq", name: "Groq (무료 티어)", icon: "🔵",
     models: [
       { id: "llama-3.3-70b-versatile", name: "Llama 3.3 70B", desc: "무료 · 빠른 응답", speed: "매우 빠름", quality: "우수" },
