@@ -30,7 +30,7 @@ export async function POST(request) {
             headers: { 'Content-Type': 'application/json', 'x-api-key': config.apiKey, 'anthropic-version': '2023-06-01' },
             body: JSON.stringify({ model: config.model, max_tokens: max_tokens || 800, system, messages }),
           });
-          if (res.status === 429) { await sleep(3000 * (attempt + 1)); continue; }
+          if (res.status === 429) { await sleep(15000); continue; }
           if (!res.ok) { const e = await res.json().catch(() => ({})); throw new Error(e?.error?.message || `API ${res.status}`); }
           const data = await res.json();
           text = data.content.filter(c => c.type === 'text').map(c => c.text).join('\n');
@@ -40,7 +40,7 @@ export async function POST(request) {
             headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${config.apiKey}` },
             body: JSON.stringify({ model: config.model, max_tokens: max_tokens || 800, messages: [{ role: 'system', content: system }, ...messages] }),
           });
-          if (res.status === 429) { await sleep(3000 * (attempt + 1)); continue; }
+          if (res.status === 429) { await sleep(15000); continue; }
           if (!res.ok) { const e = await res.json().catch(() => ({})); throw new Error(e?.error?.message || `API ${res.status}`); }
           const data = await res.json();
           text = data.choices?.[0]?.message?.content || '';

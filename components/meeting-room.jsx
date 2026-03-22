@@ -148,6 +148,7 @@ const LLM_PROVIDERS = [
     signupUrl: "https://console.anthropic.com/",
     format: "anthropic",
   },
+
   {
     id: "groq", name: "Groq (무료 티어)", icon: "🔵",
     models: [
@@ -792,7 +793,7 @@ function HelpModal({ onClose, isMobile }) {
     start: [
       { q: "이게 뭐예요?", a: "DD Ai 에이전트 11명이 각자 역할에 맞게 회의하듯 토론하고, 최종 결론과 실행 가이드를 자동으로 만들어주는 도구입니다.\n\n기본 5명이 활성화되어 있고, 필요에 따라 데이터분석가, 마케터, 재무분석가, 개발자, 디자인분석가, 영업전문가를 추가할 수 있어요." },
       { q: "어떻게 시작하나요?", a: "1. ✨ 내장 Claude가 기본 선택 — API 키 없이 바로 시작!\n2. 회의 모드 선택 (자동 수렴 추천)\n3. 회의 유형 선택 또는 자유 회의\n4. 주제를 입력하면 에이전트들이 토론 시작!\n\n다른 LLM을 쓰고 싶다면 ⚙️ 버튼에서 변경." },
-      { q: "API 키 없이 쓸 수 있나요?", a: "네! ✨ 내장 Claude가 기본 선택이라 API 키 없이 바로 사용 가능합니다.\n\n배포 후 다른 LLM을 쓰고 싶다면:\n• 무료: Cerebras, Groq\n• 유료: Anthropic, OpenAI, Perplexity\n⚙️ 설정에서 변경 가능." },
+      { q: "API 키 없이 쓸 수 있나요?", a: "네! ✨ 내장 Claude가 기본 선택이라 API 키 없이 바로 사용 가능합니다.\n\n배포 후 다른 LLM을 쓰고 싶다면:\n• 무료: Groq\n• 유료: Anthropic, OpenAI, Perplexity\n⚙️ 설정에서 변경 가능." },
       { q: "LLM 모델 변경 방법", a: "⚙️ 버튼 클릭 → 제공자 선택 → 모델 선택 → API 키 입력 (내장 Claude 제외)\n\n로비에서도 회의 중에서도 변경 가능합니다." },
     ],
     modes: [
@@ -817,7 +818,7 @@ function HelpModal({ onClose, isMobile }) {
     ],
     search: [
       { q: "웹 검색이 뭔가요?", a: "에이전트가 답변 시 인터넷에서 실시간 데이터를 검색합니다.\n예: 최신 시장 통계, 경쟁사 현황, 금리 정보, 분양률 등\n\n검색 없으면 LLM 학습 데이터로만 답변 (추측 가능)." },
-      { q: "지원 모델", a: "✅ ✨ 내장 Claude: web_search 도구 자동 호출\n✅ 🟣 Claude (Anthropic): web_search 도구 자동 호출\n✅ 🔍 Perplexity: 모든 답변에 검색+출처 내장\n\n❌ Cerebras, Groq, OpenAI: 웹 검색 미지원" },
+      { q: "지원 모델", a: "✅ ✨ 내장 Claude: web_search 도구 자동 호출\n✅ 🟣 Claude (Anthropic): web_search 도구 자동 호출\n✅ 🔍 Perplexity: 모든 답변에 검색+출처 내장\n\n❌ Groq, OpenAI: 웹 검색 미지원" },
       { q: "언제 켜야 하나요?", a: "✅ 켜면 좋은 경우:\n• 시장 조사, 경쟁 분석\n• 최신 트렌드/통계 필요\n• 부동산, 금융 등 실시간 데이터\n\n❌ 꺼도 되는 경우:\n• 브레인스토밍\n• 내부 전략 논의\n• 창의적 아이디어 발산\n\n⚠️ 검색 ON하면 에이전트당 +5~10초 추가됩니다." },
       { q: "설정 방법", a: "⚙️ 버튼 → 🌐 웹 검색 모드 토글 ON\n\n내장 Claude 또는 Anthropic/Perplexity 선택 시 사용 가능." },
     ],
@@ -832,8 +833,8 @@ function HelpModal({ onClose, isMobile }) {
     ],
     speed: [
       { q: "왜 오래 걸리나요?", a: "에이전트가 순차적으로 하나씩 API를 호출합니다.\n에이전트 1명당 약 8~15초, 5명이면 40~75초.\n\n자동 수렴 3라운드 = 5명 기준 약 2~4분\n웹 검색 ON이면 에이전트당 +5~10초 추가." },
-      { q: "빠르게 쓰는 방법", a: "1. 에이전트 3~5명만 켜기 (가장 효과 큼)\n2. 웹 검색 OFF\n3. 배포 후 Cerebras/Groq 사용 (3~5배 빠름)\n4. 수동 모드로 필요한 라운드만 진행" },
-      { q: "배포하면 얼마나 빨라지나요?", a: "내장 Claude (미리보기): 에이전트 1명 10~15초\nVercel + Claude API: 에이전트 1명 5~8초\nVercel + Cerebras/Groq: 에이전트 1명 1~3초\n\nCerebras/Groq로 배포하면 5~10배 빨라집니다." },
+      { q: "빠르게 쓰는 방법", a: "1. 에이전트 3~5명만 켜기 (가장 효과 큼)\n2. 웹 검색 OFF\n3. 배포 후 Groq 사용 (3~5배 빠름)\n4. 수동 모드로 필요한 라운드만 진행" },
+      { q: "배포하면 얼마나 빨라지나요?", a: "내장 Claude (미리보기): 에이전트 1명 10~15초\nVercel + Claude API: 에이전트 1명 5~8초\nVercel + Groq: 에이전트 1명 1~3초\n\nGroq로 배포하면 5~10배 빨라집니다." },
       { q: "🔄 강제 초기화 버튼", a: "2분 이상 응답이 없으면 자동으로 나타납니다.\n\n• 기다리면: 진행 중인 작업 계속됨 (대부분 결국 완료됨)\n• 누르면: 모든 것 즉시 중단, 새 주제 입력 가능\n\n완전히 멈췄을 때만 사용하세요." },
       { q: "45초 타임아웃", a: "각 API 호출에 45초 제한이 있습니다.\n45초 내 응답이 없으면 해당 에이전트를 건너뛰고 다음으로 자동 진행합니다." },
       { q: "회의가 멈췄을 때", a: "1. 조금 더 기다리기 (API가 느린 경우 대부분 해결)\n2. 🔄 강제 초기화 버튼 누르기\n3. ← 뒤로가기 → 새 회의 시작\n4. 에이전트 수를 줄이고 다시 시도" },
@@ -1098,7 +1099,7 @@ export default function MeetingRoomV3() {
       return reply;
     }
     
-    // 기타 OpenAI 호환 (Cerebras, Groq, OpenAI)
+    // 기타 OpenAI 호환 (Groq, OpenAI)
     else {
       const res = await fetchWithTimeout(currentProvider.apiUrl, {
         method: "POST",
