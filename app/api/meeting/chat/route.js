@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 
 function getLLMConfig() {
   if (process.env.CEREBRAS_API_KEY) {
-    return { apiUrl: 'https://api.cerebras.ai/v1/chat/completions', apiKey: process.env.CEREBRAS_API_KEY, model: process.env.CEREBRAS_MODEL || 'llama-3.3-70b', format: 'openai' };
+    return { apiUrl: 'https://api.cerebras.ai/v1/chat/completions', apiKey: process.env.CEREBRAS_API_KEY, model: process.env.CEREBRAS_MODEL || 'llama-4-scout-17b-16e-instruct', format: 'openai' };
   }
   if (process.env.GROQ_API_KEY) {
     return { apiUrl: 'https://api.groq.com/openai/v1/chat/completions', apiKey: process.env.GROQ_API_KEY, model: process.env.GROQ_MODEL || 'llama-3.3-70b-versatile', format: 'openai' };
